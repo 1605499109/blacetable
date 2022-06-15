@@ -53,7 +53,7 @@ export default {
           'refresh_token',
           'Bearer ' + res.data.data.refresh_token
         )
-        this.$router.push({ name: 'layout' })
+        this.$router.push({ name: 'home' })
       }
     }
   }

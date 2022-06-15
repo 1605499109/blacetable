@@ -11,7 +11,7 @@
       </div>
       <span>{{ article.aut_name }}</span
       ><span>{{ article.comm_count }}评论</span
-      ><span>{{ article.pubdate }}</span>
+      ><span> {{newdates}}</span>
     </div>
     <van-image
       v-if="article.cover.type === 1"
@@ -24,11 +24,28 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+require('dayjs/locale/zh-cn')
+// import 'dayjs/locale/de' // ES 2015
+
+dayjs.locale('zh-cn')
+const relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 export default {
+  created () {
+    // console.log(relativeTime)
+    // console.log(dayjs())
+  },
   props: {
     article: {
       type: Object,
       require: true
+    }
+  },
+
+  computed: {
+    newdates () {
+      return dayjs().to(dayjs(this.article.pubdate))
     }
   }
 }

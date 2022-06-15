@@ -15,11 +15,14 @@
 <script>
 
 export default {
+  created () {
+    // console.log(this.$store)
+  },
 
   data () {
     return {
       // 数据
-      active: '',
+      active: this.$store.state.active,
       // 时间戳当前
       times: Date.now()
     }
@@ -28,10 +31,15 @@ export default {
 
     onChange (index) {
       if (index === 0) {
+        this.$store.commit('chagestate', this.active)
         this.$router.push({ name: 'home' })
       }
       if (index === 1) {
+        this.$store.commit('chagestate', this.active)
         this.$router.push({ name: 'user' })
+
+        // this.$commit('chagestate', this.active)
+        // console.log(this.$emit)
       }
     }
   },

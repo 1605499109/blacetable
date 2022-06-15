@@ -70,6 +70,10 @@ const routes = [
     path: '/fans',
     name: 'fans',
     component: () => import(/* webpackChunkName: "about" */ '../views/userinfo/FansView.vue')
+  },
+  {
+    path: '*',
+    redirect: { name: 'home' }
   }
 
 ]
